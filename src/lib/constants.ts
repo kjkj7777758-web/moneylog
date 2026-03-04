@@ -45,6 +45,7 @@ export const NAV_LINKS = [
   { href: '/category/realestate', label: '부동산' },
   { href: '/category/saving-tips', label: '절약' },
   { href: '/category/economy', label: '경제상식' },
+  { href: '/tools', label: '🧮 계산기' },
 ];
 
 export const TAGS = [

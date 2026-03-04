@@ -21,6 +21,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const toolPages = [
+    'tools',
+    'tools/salary-calculator',
+    'tools/savings-calculator',
+    'tools/compound-calculator',
+  ].map((page) => ({
+    url: `${SITE_URL}/${page}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.9,
+  }));
+
   const staticPages = ['about', 'contact', 'privacy', 'terms'].map((page) => ({
     url: `${SITE_URL}/${page}`,
     lastModified: new Date(),
@@ -36,6 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     ...categoryEntries,
+    ...toolPages,
     ...postEntries,
     ...staticPages,
   ];
