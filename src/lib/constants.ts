@@ -2,7 +2,7 @@ import { Category, CategorySlug } from '@/types';
 
 export const SITE_NAME = '머니로그';
 export const SITE_TAGLINE = '똑똑한 경제생활 가이드';
-export const SITE_URL = 'https://moneylog.example.com';
+export const SITE_URL = 'https://money-log.company';
 export const SITE_DESCRIPTION = '경제와 재테크 정보를 쉽고 정확하게 전달하는 블로그. 저축, 투자, 부동산, 절약 팁, 경제 상식까지 한곳에서 만나보세요.';
 
 export const CATEGORIES: Record<CategorySlug, Category> = {

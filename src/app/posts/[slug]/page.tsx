@@ -130,7 +130,7 @@ export default async function PostPage({ params }: Props) {
             '@type': 'BlogPosting',
             headline: post.title,
             description: post.description,
-            image: `https://moneylog.example.com${post.image}`,
+            image: `https://money-log.company${post.image}`,
             datePublished: post.date,
             author: {
               '@type': 'Organization',

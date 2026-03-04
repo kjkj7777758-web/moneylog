@@ -4,7 +4,7 @@ import './globals.css';
 import ClientLayout from './ClientLayout';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://moneylog.example.com'),
+  metadataBase: new URL('https://money-log.company'),
   title: {
     default: '머니로그 - 똑똑한 경제생활 가이드',
     template: '%s - 머니로그',

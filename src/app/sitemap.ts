@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/posts';
 import { CATEGORIES } from '@/lib/constants';
 
-const SITE_URL = 'https://moneylog.example.com';
+const SITE_URL = 'https://money-log.company';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
