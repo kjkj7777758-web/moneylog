@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     description: '경제와 재테크 정보를 쉽고 정확하게 전달하는 블로그',
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: 'TtdX72c6EZ08YiFKmgouKeISDNDRECJua3aqEED8fGc',
+  },
 };
 
 export default function RootLayout({
