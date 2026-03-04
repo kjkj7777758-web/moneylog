@@ -38,6 +38,20 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        {/* Google Analytics */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-B2SXMD8FGC"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-B2SXMD8FGC');
+          `}
+        </Script>
         {adsenseId && (
           <Script
             async
