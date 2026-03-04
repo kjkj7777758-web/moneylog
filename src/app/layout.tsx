@@ -1,0 +1,49 @@
+import type { Metadata } from 'next';
+import Script from 'next/script';
+import './globals.css';
+import ClientLayout from './ClientLayout';
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://moneylog.example.com'),
+  title: {
+    default: '머니로그 - 똑똑한 경제생활 가이드',
+    template: '%s - 머니로그',
+  },
+  description: '경제와 재테크 정보를 쉽고 정확하게 전달하는 블로그. 저축, 투자, 부동산, 절약 팁, 경제 상식까지 한곳에서 만나보세요.',
+  keywords: ['재테크', '경제', '저축', '투자', '주식', 'ETF', '부동산', '절약', '가계부', '금리', '환율'],
+  authors: [{ name: '머니로그' }],
+  openGraph: {
+    type: 'website',
+    locale: 'ko_KR',
+    siteName: '머니로그',
+    title: '머니로그 - 똑똑한 경제생활 가이드',
+    description: '경제와 재테크 정보를 쉽고 정확하게 전달하는 블로그',
+  },
+  robots: { index: true, follow: true },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+
+  return (
+    <html lang="ko">
+      <head>
+        {adsenseId && (
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
+        )}
+      </head>
+      <body className="antialiased">
+        <ClientLayout>{children}</ClientLayout>
+      </body>
+    </html>
+  );
+}
