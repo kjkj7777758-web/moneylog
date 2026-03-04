@@ -112,6 +112,31 @@ export default function Home() {
             </>
           )}
 
+          {/* 계산기 섹션 */}
+          <div className="mt-12 mb-8">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-[1.5rem] font-bold flex items-center gap-2">🧮 재테크 계산기</h2>
+              <a href="/tools" className="text-primary text-sm font-medium hover:underline">전체 보기 →</a>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <a href="/tools/salary-calculator" className="group block bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-5 hover:shadow-lg transition-all hover:-translate-y-0.5 no-underline">
+                <span className="text-3xl block mb-2">💰</span>
+                <span className="font-bold text-text-main group-hover:text-primary transition-colors block mb-1">연봉 실수령액 계산기</span>
+                <span className="text-text-light text-sm block">4대보험·소득세 반영</span>
+              </a>
+              <a href="/tools/savings-calculator" className="group block bg-gradient-to-br from-emerald-50 to-emerald-100 border border-emerald-200 rounded-xl p-5 hover:shadow-lg transition-all hover:-translate-y-0.5 no-underline">
+                <span className="text-3xl block mb-2">🏦</span>
+                <span className="font-bold text-text-main group-hover:text-primary transition-colors block mb-1">적금·예금 이자 계산기</span>
+                <span className="text-text-light text-sm block">만기 수령액 계산</span>
+              </a>
+              <a href="/tools/compound-calculator" className="group block bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 rounded-xl p-5 hover:shadow-lg transition-all hover:-translate-y-0.5 no-underline">
+                <span className="text-3xl block mb-2">📈</span>
+                <span className="font-bold text-text-main group-hover:text-primary transition-colors block mb-1">복리 계산기</span>
+                <span className="text-text-light text-sm block">장기 투자 시뮬레이션</span>
+              </a>
+            </div>
+          </div>
+
           {/* Coupang Banner */}
           <div className="mt-10">
             <CoupangBanner />
