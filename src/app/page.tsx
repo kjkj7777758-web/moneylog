@@ -4,6 +4,7 @@ import FeaturedPost from '@/components/blog/FeaturedPost';
 import PostsGrid from '@/components/blog/PostsGrid';
 import CategoryTabs from '@/components/blog/CategoryTabs';
 import AdBanner from '@/components/ads/AdBanner';
+import CoupangBanner from '@/components/ads/CoupangBanner';
 import { getAllPosts, getFeaturedPost } from '@/lib/posts';
 
 export default function Home() {
@@ -111,8 +112,13 @@ export default function Home() {
             </>
           )}
 
-          {/* Ad */}
+          {/* Coupang Banner */}
           <div className="mt-10">
+            <CoupangBanner />
+          </div>
+
+          {/* Ad */}
+          <div className="mt-6">
             <AdBanner />
           </div>
         </div>

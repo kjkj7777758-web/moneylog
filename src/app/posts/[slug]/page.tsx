@@ -9,6 +9,7 @@ import ReadingProgress from '@/components/blog/ReadingProgress';
 import Breadcrumb from '@/components/blog/Breadcrumb';
 import PostNav from '@/components/blog/PostNav';
 import AdInContent from '@/components/ads/AdInContent';
+import CoupangBanner from '@/components/ads/CoupangBanner';
 import InfoBox from '@/components/mdx/InfoBox';
 import WarningBox from '@/components/mdx/WarningBox';
 
@@ -111,6 +112,9 @@ export default async function PostPage({ params }: Props) {
             },
           }}
         />
+
+        {/* Coupang Banner */}
+        <CoupangBanner />
 
         {/* In-content Ad */}
         <AdInContent />
