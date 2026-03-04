@@ -149,6 +149,12 @@ a:hover {
   }
 }
 
+/* Hero animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
 /* Print */
 @media print {
   header, footer, aside, .back-to-top {
