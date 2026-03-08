@@ -37,10 +37,10 @@ export default function RootLayout({
 
   return (
     <html lang="ko">
-      <head>
+      <head />
+      <body className="antialiased">
         {/* Google Analytics */}
         <Script
-          async
           src="https://www.googletagmanager.com/gtag/js?id=G-B2SXMD8FGC"
           strategy="afterInteractive"
         />
@@ -60,8 +60,6 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         )}
-      </head>
-      <body className="antialiased">
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
