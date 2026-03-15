@@ -3,11 +3,13 @@ import Image from 'next/image';
 import React from 'react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeSlug from 'rehype-slug';
-import { getAllSlugs, getPostBySlug } from '@/lib/posts';
+import { getAllSlugs, getPostBySlug, getRelatedPosts } from '@/lib/posts';
 import { CATEGORIES } from '@/lib/constants';
 import ReadingProgress from '@/components/blog/ReadingProgress';
 import Breadcrumb from '@/components/blog/Breadcrumb';
 import PostNav from '@/components/blog/PostNav';
+import PostCard from '@/components/blog/PostCard';
+import ShareButtons from '@/components/blog/ShareButtons';
 import AdInContent from '@/components/ads/AdInContent';
 import CoupangBanner from '@/components/ads/CoupangBanner';
 import InfoBox from '@/components/mdx/InfoBox';
@@ -62,6 +64,7 @@ export default async function PostPage({ params }: Props) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   const category = CATEGORIES[post.category];
+  const relatedPosts = getRelatedPosts(slug, post.category, 3);
 
   return (
     <>
@@ -85,6 +88,22 @@ export default async function PostPage({ params }: Props) {
           <span>📅 {post.date.replace(/-/g, '.')}</span>
           <span>⏱ {post.readTime}분 읽기</span>
           <span>✍️ {post.author}</span>
+        </div>
+
+        {/* Tags */}
+        {post.tags && post.tags.length > 0 && (
+          <div className="flex items-center justify-center gap-2 mt-4 flex-wrap">
+            {post.tags.map((tag) => (
+              <span key={tag} className="text-xs bg-gray-100 text-text-light px-2.5 py-1 rounded-full">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* Share Buttons */}
+        <div className="flex justify-center mt-4">
+          <ShareButtons title={post.title} slug={post.slug} />
         </div>
       </div>
 
@@ -119,6 +138,18 @@ export default async function PostPage({ params }: Props) {
         {/* In-content Ad */}
         <AdInContent />
       </article>
+
+      {/* Related Posts */}
+      {relatedPosts.length > 0 && (
+        <div className="max-w-[800px] mx-auto px-5 pb-8">
+          <h2 className="text-[1.3rem] font-bold mb-5 flex items-center gap-2">📚 관련 글</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {relatedPosts.map((rp) => (
+              <PostCard key={rp.slug} post={rp} />
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Post Navigation */}
       <div className="max-w-[800px] mx-auto px-5 pb-10">

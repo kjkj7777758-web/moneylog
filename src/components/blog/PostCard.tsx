@@ -28,6 +28,15 @@ export default function PostCard({ post }: { post: Post }) {
         <p className="text-[0.9rem] text-text-light leading-relaxed line-clamp-3 mb-4">
           {post.description}
         </p>
+        {post.tags && post.tags.length > 0 && (
+          <div className="flex items-center gap-1.5 mb-2 flex-wrap">
+            {post.tags.slice(0, 2).map((tag) => (
+              <span key={tag} className="text-[0.7rem] bg-gray-100 text-text-light px-2 py-0.5 rounded-full">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
         <div className="flex items-center gap-3 text-[0.82rem] text-text-lighter">
           <span>📅 {post.date.replace(/-/g, '.')}</span>
           <span>⏱ {post.readTime}분 읽기</span>

@@ -67,7 +67,7 @@ export default function Home() {
           {/* Stats */}
           <div className="flex items-center justify-center gap-8 md:gap-12 mt-10">
             <div className="text-center">
-              <div className="text-amber-400 text-2xl md:text-3xl font-bold">15+</div>
+              <div className="text-amber-400 text-2xl md:text-3xl font-bold">20+</div>
               <div className="text-gray-400 text-xs md:text-sm mt-1">전문 콘텐츠</div>
             </div>
             <div className="w-px h-10 bg-white/20" />
@@ -99,6 +99,7 @@ export default function Home() {
           {/* Latest Posts */}
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-[1.5rem] font-bold flex items-center gap-2">📝 최신 글</h2>
+            <a href="/posts" className="text-primary text-sm font-medium hover:underline">전체 글 보기 →</a>
           </div>
           <PostsGrid posts={latestPosts} />
 

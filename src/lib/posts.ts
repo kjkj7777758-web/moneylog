@@ -54,3 +54,9 @@ export function getFeaturedPost(): Post {
   const posts = getAllPosts();
   return posts.find((p) => p.featured) || posts[0];
 }
+
+export function getRelatedPosts(slug: string, category: string, count: number = 3): Post[] {
+  return getAllPosts()
+    .filter((post) => post.slug !== slug && post.category === category)
+    .slice(0, count);
+}
