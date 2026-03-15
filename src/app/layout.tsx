@@ -33,8 +33,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
-
   return (
     <html lang="ko">
       <head />
@@ -52,14 +50,13 @@ export default function RootLayout({
             gtag('config', 'G-B2SXMD8FGC');
           `}
         </Script>
-        {adsenseId && (
-          <Script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
-            crossOrigin="anonymous"
-            strategy="afterInteractive"
-          />
-        )}
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3774274080171066"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
