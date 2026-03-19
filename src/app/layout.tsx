@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 import ClientLayout from './ClientLayout';
 
@@ -58,6 +59,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         <ClientLayout>{children}</ClientLayout>
+        <SpeedInsights />
       </body>
     </html>
   );
