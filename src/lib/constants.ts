@@ -36,6 +36,12 @@ export const CATEGORIES: Record<CategorySlug, Category> = {
     icon: '📊',
     description: '금리, 환율, 인플레이션 등 경제 기본 개념을 쉽게 설명합니다.',
   },
+  tech: {
+    slug: 'tech',
+    name: '테크·IT',
+    icon: '💻',
+    description: '최신 기술 트렌드와 IT 활용법, 디지털 경제 이야기를 다룹니다.',
+  },
 };
 
 export const NAV_LINKS = [
@@ -45,6 +51,7 @@ export const NAV_LINKS = [
   { href: '/category/realestate', label: '부동산' },
   { href: '/category/saving-tips', label: '절약' },
   { href: '/category/economy', label: '경제상식' },
+  { href: '/category/tech', label: '테크' },
   { href: '/tools', label: '🧮 계산기' },
 ];
 

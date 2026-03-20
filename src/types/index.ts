@@ -1,4 +1,4 @@
-export type CategorySlug = 'savings' | 'investment' | 'realestate' | 'saving-tips' | 'economy';
+export type CategorySlug = 'savings' | 'investment' | 'realestate' | 'saving-tips' | 'economy' | 'tech';
 
 export interface PostFrontmatter {
   title: string;
