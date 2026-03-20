@@ -1,0 +1,56 @@
+name: Auto Publish Scheduled Posts
+
+on:
+  schedule:
+    # 매 2일마다 한국시간 오전 9시 (UTC 0시)에 실행
+    - cron: '0 0 */2 * *'
+  workflow_dispatch: # 수동 실행도 가능
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Publish next scheduled post
+        run: |
+          # scheduled 폴더에서 가장 날짜가 빠른(오래된) 글 하나를 가져옴
+          NEXT_POST=$(ls -1 content/scheduled/*.mdx 2>/dev/null | head -1)
+
+          if [ -z "$NEXT_POST" ]; then
+            echo "No scheduled posts remaining."
+            exit 0
+          fi
+
+          FILENAME=$(basename "$NEXT_POST")
+          echo "Publishing: $FILENAME"
+
+          # 오늘 날짜로 date 업데이트
+          TODAY=$(date +%Y-%m-%d)
+          sed -i "s/^date: \".*\"/date: \"$TODAY\"/" "$NEXT_POST"
+
+          # scheduled → posts 폴더로 이동
+          mv "$NEXT_POST" "content/posts/$FILENAME"
+
+          echo "published=$FILENAME" >> $GITHUB_OUTPUT
+          echo "Published $FILENAME with date $TODAY"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # 변경사항이 있을 때만 커밋
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git add -A
+          FILENAME=$(git diff --cached --name-only | grep "content/posts/" | head -1 | xargs basename 2>/dev/null || echo "post")
+          git commit -m "post: 새 글 자동 발행 - $FILENAME"
+          git push
