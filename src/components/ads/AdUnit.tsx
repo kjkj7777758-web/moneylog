@@ -26,15 +26,7 @@ export default function AdUnit({ slot, format = 'auto', className = '', style }:
     }
   }, []);
 
-  const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
-
-  if (!clientId) {
-    return (
-      <div className={`bg-bg-gray border-2 border-dashed border-border rounded-lg py-10 px-5 text-center text-text-lighter text-[0.85rem] ${className}`} style={style}>
-        광고 영역
-      </div>
-    );
-  }
+  const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || 'ca-pub-3774274080171066';
 
   return (
     <div ref={adRef} className={className} style={style}>
